@@ -1,0 +1,43 @@
+version: "3.8"
+services:
+  backend-web:
+    image: openjdk:16-alpine3.13
+    ports:
+      - "8084:8084"
+    environment:
+      - SERVER_PORT=8084
+      - POSTGRES_URL=jdbc:postgresql://backend-db:5432/memoire_db
+      - DB_HOST=localhost
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - DB_NAME=root
+    volumes:
+      - ./:/app
+    working_dir: /app
+    command: ./mvnw spring-boot:run -Dspring-boot.run.profiles=mysql -Dspring-boot.run.jvmArguments="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000"
+    depends_on:
+      - backend-db
+  backend-db:
+    container_name: pg_container
+    image: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: memoire_db
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgresql_data0:/var/lib/postgresql/data
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: layegaye001@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
+    depends_on:
+      - backend-db
+volumes:
+  postgresql_data0:
