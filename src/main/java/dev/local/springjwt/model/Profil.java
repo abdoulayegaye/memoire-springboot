@@ -23,5 +23,4 @@ public class Profil {
     @JsonIgnore
     @ToString.Exclude
     Collection<Users> users;
-
 }

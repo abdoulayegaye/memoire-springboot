@@ -29,7 +29,7 @@ public class Users {
     @Column(nullable = false)
     private char sexe;
     @Column(nullable = false,unique = true)
-    String username;
+    private String username;
     @Column(nullable = false)
     private String password;
     @Column(nullable = false, unique = true)
@@ -38,8 +38,6 @@ public class Users {
     private String email;
     @Column(nullable = false)
     private Date dateCreation;
-
-
     @ManyToMany(cascade = {
             CascadeType.MERGE,
     },fetch=FetchType.EAGER)

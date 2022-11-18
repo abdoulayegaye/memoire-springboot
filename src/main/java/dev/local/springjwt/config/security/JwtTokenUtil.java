@@ -32,7 +32,7 @@ public class JwtTokenUtil implements Serializable {
         return getClaimFromToken(token, Claims::getSubject);
     }
 
-    public Users getUserAthenticate(HttpServletRequest req) {
+    public Users getUserAuthenticate(HttpServletRequest req) {
         String token = getToken(req);
         String username = getUsernameFromToken(token);
         return userDao.findByUsername(username);
