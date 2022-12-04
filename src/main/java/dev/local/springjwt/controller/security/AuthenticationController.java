@@ -1,12 +1,11 @@
 package dev.local.springjwt.controller.security;
 
 import dev.local.springjwt.config.security.JwtTokenUtil;
-import dev.local.springjwt.dao.UserDao;
+import dev.local.springjwt.dao.UsersDao;
 import dev.local.springjwt.model.Users;
 import dev.local.springjwt.model.customer.ApiResponse;
 import dev.local.springjwt.model.customer.AuthToken;
 import dev.local.springjwt.model.customer.LoginUser;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
@@ -18,7 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/auth")
 public class AuthenticationController {
-    AuthenticationController(AuthenticationManager authenticationManager,JwtTokenUtil jwtTokenUtil,UserDao userDao){
+    AuthenticationController(AuthenticationManager authenticationManager, JwtTokenUtil jwtTokenUtil, UsersDao userDao){
         this.jwtTokenUtil=jwtTokenUtil;
         this.authenticationManager=authenticationManager;
         this.userDao=userDao;
@@ -26,7 +25,7 @@ public class AuthenticationController {
    final private AuthenticationManager authenticationManager;
 
    final private JwtTokenUtil jwtTokenUtil;
-   final private UserDao userDao;
+   final private UsersDao userDao;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ApiResponse<Users> register(@RequestBody LoginUser loginUser) throws AuthenticationException {

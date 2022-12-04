@@ -6,7 +6,6 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
 @Setter
@@ -21,13 +20,13 @@ public class Sujet {
     private Long id;
     @Column(nullable = false)
     private String libelle;
-    @Column
+    @Column(nullable = false)
     private String contexte;
-    @Column
+    @Column(nullable = false)
     private String problematique;
-    @Column
+    @Column(nullable = false)
     private String motivation;
-    @Column
+    @Column(nullable = false)
     private String interet;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -37,29 +36,15 @@ public class Sujet {
     private Professeur professeur;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "etudiant_id", nullable = false)
+    @JoinColumn(name = "etudiant_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Etudiant etudiant;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "directeuretudes_id")
+    @JoinColumn(name = "validateur_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private DirecteurEtudes directeurEtudes;
+    private Validateur validateur;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "chefdepartement_id")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    private ChefDepartement chefDepartement;
-
-    @ManyToMany(cascade = {
-            CascadeType.MERGE,
-    },fetch=FetchType.EAGER)
-    @JoinTable(name = "sujet_technologie",
-            joinColumns = @JoinColumn(name = "sujet_id"),
-            inverseJoinColumns = @JoinColumn(name = "technologie_id")
-    )
-    private Collection<Technologie> technologies;
 }

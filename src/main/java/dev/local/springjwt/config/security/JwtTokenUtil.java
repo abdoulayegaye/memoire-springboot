@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.function.Function;
 
 import dev.local.springjwt.dao.ProfilDao;
-import dev.local.springjwt.dao.UserDao;
+import dev.local.springjwt.dao.UsersDao;
 import dev.local.springjwt.model.Users;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -19,10 +19,10 @@ import javax.servlet.http.HttpServletRequest;
 import static dev.local.springjwt.config.security.JWTConstant.*;
 @Component
 public class JwtTokenUtil implements Serializable {
-    final UserDao userDao;
+    final UsersDao userDao;
     final ProfilDao profilDao;
     final UserDetailsService userDetailsService;
-    JwtTokenUtil(ProfilDao profil, UserDao userDao, UserDetailsService userDetailsService){
+    JwtTokenUtil(ProfilDao profil, UsersDao userDao, UserDetailsService userDetailsService){
         this.profilDao = profil;
         this.userDao = userDao;
         this.userDetailsService = userDetailsService;

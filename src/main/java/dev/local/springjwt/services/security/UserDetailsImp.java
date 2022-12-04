@@ -1,7 +1,7 @@
 package dev.local.springjwt.services.security;
 
 import dev.local.springjwt.dao.ProfilDao;
-import dev.local.springjwt.dao.UserDao;
+import dev.local.springjwt.dao.UsersDao;
 import dev.local.springjwt.model.Profil;
 import dev.local.springjwt.model.Users;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,9 +18,9 @@ import java.util.List;
 
 @Service
 public class UserDetailsImp implements UserDetailsService {
-    final UserDao userDao;
+    final UsersDao userDao;
     final ProfilDao profilDao;
-    UserDetailsImp(ProfilDao profil,UserDao userDao){
+    UserDetailsImp(ProfilDao profil, UsersDao userDao){
         this.profilDao = profil;
         this.userDao = userDao;
     }
