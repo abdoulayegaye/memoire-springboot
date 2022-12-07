@@ -1,5 +1,6 @@
 package dev.local.springjwt.controller;
 
+import dev.local.springjwt.domain.EtudiantDto;
 import dev.local.springjwt.model.Etudiant;
 import dev.local.springjwt.services.EtudiantService;
 import lombok.AllArgsConstructor;
@@ -15,26 +16,26 @@ public class EtudiantController {
     EtudiantService etudiantService;
 
     @GetMapping
-    public List<Etudiant> getEtudiants() {
+    public List<EtudiantDto> getEtudiants() {
         return etudiantService.getEtudiants();
     }
 
-    @GetMapping("{matricule}")
-    public Etudiant getEtudiant(@PathVariable("matricule") String matricule) {
-        return etudiantService.getEtudiant(matricule);
+    @GetMapping("/{id}")
+    public EtudiantDto getEtudiant(@PathVariable("id") Long id) {
+        return etudiantService.getEtudiant(id);
     }
 
     @PostMapping
-    public Etudiant createEtudiant(@RequestBody Etudiant etudiant) {
+    public EtudiantDto createEtudiant(@RequestBody EtudiantDto etudiant) {
         return etudiantService.createEtudiant(etudiant);
     }
 
-    @PutMapping("{matricule}")
-    public Etudiant updateEtudiant(@PathVariable("matricule") String matricule, @RequestBody Etudiant etudiant) {
-        return etudiantService.updateEtudiant(matricule, etudiant);
+    @PutMapping("/{id}")
+    public EtudiantDto updateEtudiant(@PathVariable("id") Long id, @RequestBody EtudiantDto etudiant) {
+        return etudiantService.updateEtudiant(id, etudiant);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public void deleteEtudiant(@PathVariable("id") Long id) {
         etudiantService.deleteEtudiant(id);
     }

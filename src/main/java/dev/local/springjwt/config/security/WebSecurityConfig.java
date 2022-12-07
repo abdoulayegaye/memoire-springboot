@@ -53,6 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
                 .antMatchers("/prof/**").hasAnyAuthority("PROFESSEUR")
                 .antMatchers("/chef/**").hasAnyAuthority("CHEF")
                 .antMatchers("/de/**").hasAnyAuthority("DE")
+                .antMatchers("/validateur/**").hasAnyAuthority("VALIDATEUR")
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()

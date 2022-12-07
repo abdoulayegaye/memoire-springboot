@@ -7,5 +7,5 @@ import org.mapstruct.Mapper;
 @Mapper
 public interface UsersMapper {
     UsersDto toUsers(Users userEntity);
-    Users fromUsers(UsersDto creditDto);
+    Users fromUsers(UsersDto usersDto);
 }
