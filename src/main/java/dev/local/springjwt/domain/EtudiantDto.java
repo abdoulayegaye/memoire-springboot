@@ -15,4 +15,6 @@ public class EtudiantDto {
     private String matriculeET;
     @NotNull
     private String classe;
+    @NotNull
+    private int etat;
 }

@@ -30,8 +30,5 @@ public class SujetDto {
     private Professeur professeur;
 
     @NotNull
-    private Etudiant etudiant;
-
-    @NotNull
-    private Validateur validateur;
+    private int etat;
 }

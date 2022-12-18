@@ -13,4 +13,6 @@ public class DirecteurEtudesDto {
     private Long id;
     @NotNull
     private String matriculeDE;
+    @NotNull
+    private int etat;
 }

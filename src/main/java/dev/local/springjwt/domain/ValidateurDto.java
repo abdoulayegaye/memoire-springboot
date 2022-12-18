@@ -13,4 +13,6 @@ public class ValidateurDto {
     private Long id;
     @NotNull
     private String matriculeV;
+    @NotNull
+    private int etat;
 }

@@ -17,4 +17,6 @@ public class ProfesseurDto {
     private String domaine;
     @NotNull
     private String grade;
+    @NotNull
+    private int etat;
 }

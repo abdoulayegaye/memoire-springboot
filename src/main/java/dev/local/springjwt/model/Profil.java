@@ -18,6 +18,8 @@ public class Profil {
     private Long id;
     @Column(nullable = false)
     private String role;
+    @Column(nullable = false, columnDefinition = "int(1) default '1'")
+    protected int etat;
 
     @ManyToMany(mappedBy = "profils",fetch = FetchType.LAZY)
     @JsonIgnore

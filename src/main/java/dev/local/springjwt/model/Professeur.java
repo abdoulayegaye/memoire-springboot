@@ -10,7 +10,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Professeur{
+@DiscriminatorValue("PROF")
+public class Professeur extends Users{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -21,4 +22,6 @@ public class Professeur{
     private String domaine;
     @Column(nullable = false)
     private String grade;
+    @Column(nullable = false, columnDefinition = "int(1) default '1'")
+    protected int etat;
 }

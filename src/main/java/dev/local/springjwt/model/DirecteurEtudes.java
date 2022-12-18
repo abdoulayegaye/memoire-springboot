@@ -10,11 +10,14 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class DirecteurEtudes{
+@DiscriminatorValue("DE")
+public class DirecteurEtudes extends Users{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
     @Column(nullable = false)
     private String matriculeDE;
+    @Column(nullable = false, columnDefinition = "int(1) default '1'")
+    protected int etat;
 }

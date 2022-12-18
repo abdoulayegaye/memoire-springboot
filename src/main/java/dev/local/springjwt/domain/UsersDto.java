@@ -38,4 +38,6 @@ public class UsersDto {
     private Date dateCreation;
     @NotNull
     Collection<Profil> profils ;
+    @NotNull
+    private int etat;
 }

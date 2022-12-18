@@ -6,6 +6,8 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Setter
@@ -18,33 +20,35 @@ public class Sujet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
+    @Lob
     @Column(nullable = false)
     private String libelle;
+    @Lob
     @Column(nullable = false)
     private String contexte;
+    @Lob
     @Column(nullable = false)
     private String problematique;
+    @Lob
     @Column(nullable = false)
     private String motivation;
+    @Lob
     @Column(nullable = false)
-    private String interet;
+    private String technologie;
+    @Column(nullable = false, columnDefinition = "int(1) default '1'")
+    private int etat;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "professeur_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
     private Professeur professeur;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "etudiant_id")
-    @OnDelete(action = OnDeleteAction.CASCADE)
+    @ManyToMany(fetch=FetchType.LAZY)
+    /*@JoinTable(name = "sujet_etudiant",
+            joinColumns = @JoinColumn(name = "sujet_id"),
+            inverseJoinColumns = @JoinColumn(name = "etudiant_id")
+    )*/
     @JsonIgnore
-    private Etudiant etudiant;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "validateur_id")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    private Validateur validateur;
-
+    List<Etudiant> etudiants ;
 }

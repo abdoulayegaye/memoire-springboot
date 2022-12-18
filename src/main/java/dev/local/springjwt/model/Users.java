@@ -12,6 +12,8 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="type_user")
 public class Users {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -38,6 +40,8 @@ public class Users {
     private String email;
     @Column(nullable = false)
     private Date dateCreation;
+    @Column(nullable = false, columnDefinition = "int(1) default '1'")
+    protected int etat;
     @ManyToMany(cascade = {
             CascadeType.MERGE,
     },fetch=FetchType.EAGER)

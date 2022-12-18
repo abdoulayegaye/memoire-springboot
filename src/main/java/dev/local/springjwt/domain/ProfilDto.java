@@ -17,4 +17,6 @@ public class ProfilDto {
     private String role;
     @NotNull
     Collection<Users> users;
+    @NotNull
+    private int etat;
 }

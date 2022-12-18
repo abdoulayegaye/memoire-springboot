@@ -2,7 +2,6 @@ package dev.local.springjwt.services;
 
 import dev.local.springjwt.dao.ProfesseurDao;
 import dev.local.springjwt.domain.ProfesseurDto;
-import dev.local.springjwt.domain.ProfesseurDto;
 import dev.local.springjwt.exception.RequestException;
 import dev.local.springjwt.mapping.ProfesseurMapper;
 import lombok.AllArgsConstructor;
